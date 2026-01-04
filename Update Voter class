@@ -1,0 +1,31 @@
+static class Voter {
+    int id;
+    String name;
+    String mobile;
+    String Email 
+    String aadhar;
+    String pan;
+    String fatherName;
+    String.father mobile number;
+    String fatherEpic;
+    String motherName;
+    String motherEpic;
+    String rationCard;
+    boolean voted = false;
+
+
+    Voter(int id, String name, String aadhar, String pan, String fatherName, String fatherEpic, String motherName, String motherEpic, String rationCard){
+        this.id = id;
+        this.name = name;
+        this.mobile = mobile;
+        this.email = email;
+        this.aadhar = aadhar;
+        this.pan = pan;
+        this.fatherName = fatherName;
+        this.father mobile number= Father mobile number;
+        this.fatherEpic = fatherEpic;
+        this.motherName = motherName;
+        this.motherEpic = motherEpic;
+        this.rationCard = rationCard;
+    }
+}
