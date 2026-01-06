@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("===== VOTER REGISTRATION FORM =====");
+
+        // Basic Details
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
+        sc.nextLine(); // consume newline
+
+        // CONDITION 1: Age check
+        if (age < 18) {
+            System.out.println("❌ Not Eligible: Age must be 18 or above.");
+            return;
+        }
+
+        System.out.print("Enter Aadhaar Number (12 digits): ");
+        String aadhaar = sc.nextLine();
+
+        // CONDITION 2: Aadhaar check
+        if (aadhaar.length() != 12) {
+            System.out.println("❌ Invalid Aadhaar Number.");
+            return;
+        }
+
+        System.out.print("Enter Mobile Number (10 digits): ");
+        String mobile = sc.nextLine();
+
+        // CONDITION 3: Mobile number check
+        if (mobile.length() != 10) {
+            System.out.println("❌ Invalid Mobile Number.");
+            return;
+        }
+
+        // Additional Details
+        System.out.print("Enter PAN Number: ");
+        String pan = sc.nextLine();
+
+        System.out.print("Enter Email ID: ");
+        String email = sc.nextLine();
+
+        System.out.print("Enter Father Name: ");
+        String fatherName = sc.nextLine();
+
+        System.out.print("Enter Father EPIC Number: ");
+        String fatherEPIC = sc.nextLine();
+
+        System.out.print("Enter Mother Name: ");
+        String motherName = sc.nextLine();
+
+        System.out.print("Enter Mother EPIC Number: ");
+        String motherEPIC = sc.nextLine();
+
+        System.out.print("Enter Address: ");
+        String address = sc.nextLine();
+
+        // Successful Registration
+        System.out.println("\n✅ VOTER REGISTRATION SUCCESSFUL");
+        System.out.println("--------- VOTER DETAILS ---------");
+        System.out.println("Name        : " + name);
+        System.out.println("Age         : " + age);
+        System.out.println("Aadhaar     : " + aadhaar);
+        System.out.println("Mobile      : " + mobile);
+        System.out.println("PAN         : " + pan);
+        System.out.println("Email       : " + email);
+        System.out.println("Father Name : " + fatherName);
+        System.out.println("Father EPIC : " + fatherEPIC);
+        System.out.println("Mother Name : " + motherName);
+        System.out.println("Mother EPIC : " + motherEPIC);
+        System.out.println("Address     : " + address);
+
+        sc.close();
+    }
+}
