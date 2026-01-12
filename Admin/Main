@@ -1,0 +1,157 @@
+/*
+ Topic    : Main Menu Program
+ Project  : Online Voting System
+ Language : Core Java
+ Concept  : Menu-driven application using OOP
+*/
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    static ArrayList<Voter> voterList = new ArrayList<>();
+    static ArrayList<Candidate> candidateList = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        // Default Candidates
+        candidateList.add(new Candidate(1, "Arun", "Party A", "Cuddalore", 45, "Male", "MBA"));
+        candidateList.add(new Candidate(2, "Bala", "Party B", "Cuddalore", 42, "Male", "MSc"));
+
+        int choice;
+
+        do {
+            System.out.println("\n========= ONLINE VOTING SYSTEM =========");
+            System.out.println("1. Register Voter");
+            System.out.println("2. Cast Vote");
+            System.out.println("3. Show Candidates");
+            System.out.println("4. Show Voters");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    registerVoter();
+                    break;
+
+                case 2:
+                    castVote();
+                    break;
+
+                case 3:
+                    showCandidates();
+                    break;
+
+                case 4:
+                    showVoters();
+                    break;
+
+                case 5:
+                    System.out.println("Thank you for using Online Voting System");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Try again.");
+            }
+        } while (choice != 5);
+    }
+
+    // ----------- REGISTER VOTER -----------
+    static void registerVoter() {
+
+        System.out.print("Voter ID: ");
+        int id = sc.nextInt(); sc.nextLine();
+
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("EPIC Number: ");
+        String epic = sc.nextLine();
+
+        System.out.print("Mobile: ");
+        String mobile = sc.nextLine();
+
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Aadhaar: ");
+        String aadhaar = sc.nextLine();
+
+        System.out.print("PAN: ");
+        String pan = sc.nextLine();
+
+        System.out.print("Ration Card: ");
+        String ration = sc.nextLine();
+
+        System.out.print("Father Name: ");
+        String fname = sc.nextLine();
+
+        System.out.print("Father EPIC: ");
+        String fepic = sc.nextLine();
+
+        System.out.print("Mother Name: ");
+        String mname = sc.nextLine();
+
+        System.out.print("Mother EPIC: ");
+        String mepic = sc.nextLine();
+
+        voterList.add(new Voter(id, name, epic, mobile, email,
+                aadhaar, pan, ration, fname, fepic, mname, mepic));
+
+        System.out.println("Voter Registered Successfully!");
+    }
+
+    // ----------- CAST VOTE -----------
+    static void castVote() {
+
+        System.out.print("Enter Voter ID: ");
+        int voterId = sc.nextInt();
+
+        for (Voter v : voterList) {
+            if (v.voterId == voterId) {
+
+                if (v.hasVoted) {
+                    System.out.println("You have already voted!");
+                    return;
+                }
+
+                for (Candidate c : candidateList) {
+                    c.displayCandidateDetails();
+                }
+
+                System.out.print("Choose Candidate ID: ");
+                int cid = sc.nextInt();
+
+                for (Candidate c : candidateList) {
+                    if (c.candidateId == cid) {
+                        c.addVote();
+                        v.markAsVoted();
+                        System.out.println("Vote Cast Successfully!");
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println("Voter not found!");
+    }
+
+    // ----------- SHOW CANDIDATES -----------
+    static void showCandidates() {
+        for (Candidate c : candidateList) {
+            c.displayCandidateDetails();
+        }
+    }
+
+    // ----------- SHOW VOTERS -----------
+    static void showVoters() {
+        for (Voter v : voterList) {
+            v.displayVoterDetails();
+        }
+    }
+}
