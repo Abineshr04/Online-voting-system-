@@ -1,0 +1,85 @@
+/*
+ Topic : Voter Registration
+ Language : Core Java
+ Concept : OOP – Class & Object
+*/
+
+public class Voter {
+
+    // ---------------- BASIC DETAILS ----------------
+    int voterId;
+    String name;
+    String epicNumber;
+    String mobileNumber;
+    String emailId;
+
+    // ---------------- IDENTITY PROOFS ----------------
+    String aadhaarNumber;
+    String panCardNumber;
+    String rationCardNumber;
+
+    // ---------------- FATHER DETAILS ----------------
+    String fatherName;
+    String fatherEpicNumber;
+
+    // ---------------- MOTHER DETAILS ----------------
+    String motherName;
+    String motherEpicNumber;
+
+    // ---------------- VOTING STATUS ----------------
+    boolean hasVoted;
+
+    // ---------------- CONSTRUCTOR ----------------
+    public Voter(int voterId,
+                 String name,
+                 String epicNumber,
+                 String mobileNumber,
+                 String emailId,
+                 String aadhaarNumber,
+                 String panCardNumber,
+                 String rationCardNumber,
+                 String fatherName,
+                 String fatherEpicNumber,
+                 String motherName,
+                 String motherEpicNumber) {
+
+        this.voterId = voterId;
+        this.name = name;
+        this.epicNumber = epicNumber;
+        this.mobileNumber = mobileNumber;
+        this.emailId = emailId;
+        this.aadhaarNumber = aadhaarNumber;
+        this.panCardNumber = panCardNumber;
+        this.rationCardNumber = rationCardNumber;
+        this.fatherName = fatherName;
+        this.fatherEpicNumber = fatherEpicNumber;
+        this.motherName = motherName;
+        this.motherEpicNumber = motherEpicNumber;
+        this.hasVoted = false;
+    }
+
+    // ---------------- DISPLAY METHOD ----------------
+    public void displayVoterDetails() {
+
+        System.out.println("=================================");
+        System.out.println("Voter ID        : " + voterId);
+        System.out.println("Name            : " + name);
+        System.out.println("EPIC Number     : " + epicNumber);
+        System.out.println("Mobile Number   : " + mobileNumber);
+        System.out.println("Email ID        : " + emailId);
+        System.out.println("Aadhaar Number  : " + aadhaarNumber);
+        System.out.println("PAN Card Number : " + panCardNumber);
+        System.out.println("Ration Card No  : " + rationCardNumber);
+        System.out.println("Father Name     : " + fatherName);
+        System.out.println("Father EPIC     : " + fatherEpicNumber);
+        System.out.println("Mother Name     : " + motherName);
+        System.out.println("Mother EPIC     : " + motherEpicNumber);
+        System.out.println("Voting Status   : " + (hasVoted ? "VOTED" : "NOT VOTED"));
+        System.out.println("=================================");
+    }
+
+    // ---------------- MARK VOTE ----------------
+    public void markAsVoted() {
+        hasVoted = true;
+    }
+}
