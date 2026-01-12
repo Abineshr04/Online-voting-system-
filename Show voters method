@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+public class Main {
+
+    // Sample Voter class
+    static class Voter {
+        int id;
+        String name, epicNumber, mobile, email;
+        String panNumber, aadhaar;
+        String fatherName, fatherEpic;
+        String motherName, motherEpic;
+        boolean voted;
+    }
+
+    // Voter list
+    static ArrayList<Voter> voters = new ArrayList<>();
+
+    // METHOD MUST BE INSIDE CLASS
+    static void showVoters() {
+
+        if (voters.isEmpty()) {
+            System.out.println("No voters registered yet!");
+            return;
+        }
+
+        System.out.println("\n========= REGISTERED VOTERS LIST =========");
+
+        for (Voter v : voters) {
+            System.out.println("----------------------------------------");
+            System.out.println("Voter ID        : " + v.id);
+            System.out.println("Name            : " + v.name);
+            System.out.println("EPIC Number     : " + v.epicNumber);
+            System.out.println("Mobile Number   : " + v.mobile);
+            System.out.println("Email ID        : " + v.email);
+            System.out.println("PAN Card        : " + v.panNumber);
+            System.out.println("Aadhaar Number  : " + v.aadhaar);
+            System.out.println("Father Name     : " + v.fatherName);
+            System.out.println("Father EPIC     : " + v.fatherEpic);
+            System.out.println("Mother Name     : " + v.motherName);
+            System.out.println("Mother EPIC     : " + v.motherEpic);
+            System.out.println("Voting Status   : " + (v.voted ? "VOTED" : "NOT VOTED"));
+        }
+        System.out.println("----------------------------------------");
+    }
+
+    // main method
+    public static void main(String[] args) {
+        showVoters(); // call method
+    }
+}
