@@ -1,0 +1,73 @@
+/*
+ Topic      : Candidate Management
+ Language   : Core Java
+ Concept    : OOP – Class, Object, Encapsulation
+ Purpose    : Stores candidate details and manages votes
+*/
+
+public class Candidate {
+
+    // ---------------- BASIC DETAILS ----------------
+    int candidateId;
+    String candidateName;
+    String partyName;
+    String constituency;
+
+    // ---------------- PERSONAL DETAILS ----------------
+    int age;
+    String gender;
+    String qualification;
+
+    // ---------------- ELECTION DETAILS ----------------
+    int totalVotes;
+    boolean activeCandidate;
+
+    // ---------------- CONSTRUCTOR ----------------
+    public Candidate(int candidateId,
+                     String candidateName,
+                     String partyName,
+                     String constituency,
+                     int age,
+                     String gender,
+                     String qualification) {
+
+        this.candidateId = candidateId;
+        this.candidateName = candidateName;
+        this.partyName = partyName;
+        this.constituency = constituency;
+        this.age = age;
+        this.gender = gender;
+        this.qualification = qualification;
+        this.totalVotes = 0;
+        this.activeCandidate = true;
+    }
+
+    // ---------------- ADD VOTE ----------------
+    public void addVote() {
+        if (activeCandidate) {
+            totalVotes++;
+        }
+    }
+
+    // ---------------- DISABLE CANDIDATE ----------------
+    public void disableCandidate() {
+        activeCandidate = false;
+    }
+
+    // ---------------- DISPLAY DETAILS ----------------
+    public void displayCandidateDetails() {
+
+        System.out.println("=================================");
+        System.out.println("Candidate ID     : " + candidateId);
+        System.out.println("Name             : " + candidateName);
+        System.out.println("Party            : " + partyName);
+        System.out.println("Constituency     : " + constituency);
+        System.out.println("Age              : " + age);
+        System.out.println("Gender           : " + gender);
+        System.out.println("Qualification    : " + qualification);
+        System.out.println("Total Votes      : " + totalVotes);
+        System.out.println("Status           : " +
+                (activeCandidate ? "ACTIVE" : "INACTIVE"));
+        System.out.println("=================================");
+    }
+}
