@@ -1,0 +1,136 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    static ArrayList<Voter> voters = new ArrayList<>();
+    static ArrayList<Candidate> candidates = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        // Default Candidates
+        candidates.add(new Candidate(1, "Candidate A"));
+        candidates.add(new Candidate(2, "Candidate B"));
+
+        int choice;
+        do {
+            System.out.println("\n===== ONLINE VOTING SYSTEM =====");
+            System.out.println("1. Register Voter");
+            System.out.println("2. Cast Vote");
+            System.out.println("3. Show Results");
+            System.out.println("4. Show Voters");
+            System.out.println("5. Exit");
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1: registerVoter(); break;
+                case 2: castVote(); break;
+                case 3: showResults(); break;
+                case 4: showVoters(); break;
+                case 5: System.out.println("Thank you!"); break;
+                default: System.out.println("Invalid choice!");
+            }
+        } while (choice != 5);
+    }
+
+    static void registerVoter() {
+
+        System.out.print("Voter ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("EPIC Number: ");
+        String epic = sc.nextLine();
+
+        System.out.print("Mobile: ");
+        String mobile = sc.nextLine();
+
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("PAN Number: ");
+        String pan = sc.nextLine();
+
+        System.out.print("Aadhaar Number: ");
+        String aadhaar = sc.nextLine();
+
+        System.out.print("Father Name: ");
+        String fname = sc.nextLine();
+
+        System.out.print("Father EPIC: ");
+        String fepic = sc.nextLine();
+
+        System.out.print("Mother Name: ");
+        String mname = sc.nextLine();
+
+        System.out.print("Mother EPIC: ");
+        String mepic = sc.nextLine();
+
+        voters.add(new Voter(id, name, epic, mobile, email, pan, aadhaar,
+                fname, fepic, mname, mepic));
+
+        System.out.println("Voter Registered Successfully!");
+    }
+
+    static void castVote() {
+
+        System.out.print("Enter Voter ID: ");
+        int id = sc.nextInt();
+
+        for (Voter v : voters) {
+            if (v.id == id) {
+
+                if (v.voted) {
+                    System.out.println("You have already voted!");
+                    return;
+                }
+
+                for (Candidate c : candidates) {
+                    System.out.println(c.id + ". " + c.name);
+                }
+
+                System.out.print("Choose Candidate ID: ");
+                int cid = sc.nextInt();
+
+                for (Candidate c : candidates) {
+                    if (c.id == cid) {
+                        c.votes++;
+                        v.voted = true;
+                        System.out.println("Vote Cast Successfully!");
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println("Voter not found!");
+    }
+
+    static void showResults() {
+        System.out.println("\n===== VOTING RESULTS =====");
+        for (Candidate c : candidates) {
+            System.out.println(c.name + " : " + c.votes + " votes");
+        }
+    }
+
+    static void showVoters() {
+
+        if (voters.isEmpty()) {
+            System.out.println("No voters registered.");
+            return;
+        }
+
+        for (Voter v : voters) {
+            System.out.println("--------------------------------");
+            System.out.println("Name: " + v.name);
+            System.out.println("EPIC: " + v.epicNumber);
+            System.out.println("Mobile: " + v.mobile);
+            System.out.println("Email: " + v.email);
+            System.out.println("Voted: " + (v.voted ? "Yes" : "No"));
+        }
+    }
+}
