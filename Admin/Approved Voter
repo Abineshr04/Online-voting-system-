@@ -1,0 +1,120 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// Voter class
+class Voter {
+    String voterId;
+    String name;
+    int age;
+    boolean approved;
+
+    Voter(String voterId, String name, int age) {
+        this.voterId = voterId;
+        this.name = name;
+        this.age = age;
+        this.approved = false;
+    }
+}
+
+// Main class
+public class ApproveVoterSystem {
+
+    static ArrayList<Voter> voters = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int choice;
+        do {
+            System.out.println("\n===== VOTER APPROVAL SYSTEM =====");
+            System.out.println("1. Add Voter Application");
+            System.out.println("2. Approve Voter (Admin)");
+            System.out.println("3. View Approved Voters");
+            System.out.println("4. Exit");
+            System.out.print("Enter choice: ");
+
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addVoter();
+                    break;
+                case 2:
+                    approveVoter();
+                    break;
+                case 3:
+                    viewApprovedVoters();
+                    break;
+                case 4:
+                    System.out.println("Thank you!");
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        } while (choice != 4);
+    }
+
+    // Add voter
+    static void addVoter() {
+        System.out.print("Enter Voter ID: ");
+        String voterId = sc.next();
+
+        System.out.print("Enter Name: ");
+        String name = sc.next();
+
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
+
+        if (age < 18) {
+            System.out.println(" Not eligible (Age must be 18+)");
+            return;
+        }
+
+        voters.add(new Voter(voterId, name, age));
+        System.out.println("Voter application submitted");
+    }
+
+    // Approve voter
+    static void approveVoter() {
+        if (voters.isEmpty()) {
+            System.out.println("No voter applications found!");
+            return;
+        }
+
+        System.out.println("\nPending Voters:");
+        for (int i = 0; i < voters.size(); i++) {
+            Voter v = voters.get(i);
+            System.out.println(i + ". " + v.name + " | Approved: " + v.approved);
+        }
+
+        System.out.print("Enter voter index to approve: ");
+        int index = sc.nextInt();
+
+        if (index >= 0 && index < voters.size()) {
+            voters.get(index).approved = true;
+            System.out.println(" Voter Approved Successfully");
+        } else {
+            System.out.println(" Invalid index");
+        }
+    }
+
+    // View approved voters
+    static void viewApprovedVoters() {
+        boolean found = false;
+
+        System.out.println("\nApproved Voters:");
+        for (Voter v : voters) {
+            if (v.approved) {
+                found = true;
+                System.out.println("Voter ID: " + v.voterId);
+                System.out.println("Name: " + v.name);
+                System.out.println("Age: " + v.age);
+                System.out.println("-------------------");
+            }
+        }
+
+        if (!found) {
+            System.out.println("No approved voters yet!");
+        }
+    }
+}
