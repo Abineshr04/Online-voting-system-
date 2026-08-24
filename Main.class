@@ -132,5 +132,10 @@ public class Main {
             System.out.println("Email: " + v.email);
             System.out.println("Voted: " + (v.voted ? "Yes" : "No"));
         }
+
+<footer>
+  <p>© 2026 Online Voting System | All Rights Reserved</p>
+</footer>
+
     }
 }
