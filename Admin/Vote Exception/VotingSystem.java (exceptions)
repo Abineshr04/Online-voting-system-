@@ -1,0 +1,39 @@
+import java.util.*;
+import java.util.Scanner;
+public class VotingSystem {
+
+Scanner scn=new Scanner(System.in);
+    private List<Candidate> candidates;
+    private Set<String> votedVoters; // tracks EPIC numbers who already voted
+
+    public VotingSystem(List<Candidate> candidates) {
+        this.candidates = candidates;
+        this.votedVoters = new HashSet<>();
+    }
+
+    public void castVote(String epicNo, int candidateChoice, boolean isSirVerified)
+            throws DuplicateVoteException, InvalidCandidateException, VoterNotVerifiedException {
+
+        // Check 1: SIR verification
+        if (!isSirVerified) {
+            throw new VoterNotVerifiedException("Voter EPIC " + epicNo +
+                    " is NOT SIR verified. Cannot cast vote.");
+        }
+
+        // Check 2: Duplicate vote
+        if (votedVoters.contains(epicNo)) {
+            throw new DuplicateVoteException("Voter EPIC " + epicNo +
+                    " has already voted. Duplicate voting not allowed.");
+        }
+
+        // Check 3: Valid candidate
+        if (candidateChoice < 1 || candidateChoice > candidates.size()) {
+            throw new InvalidCandidateException("Invalid candidate number: " + candidateChoice);
+        }
+
+        // If all checks pass
+        candidates.get(candidateChoice - 1).incrementVote();
+        votedVoters.add(epicNo);
+        System.out.println("Vote cast successfully for " + candidates.get(candidateChoice - 1).getName());
+    }
+}
