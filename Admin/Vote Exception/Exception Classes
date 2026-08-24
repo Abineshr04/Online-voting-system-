@@ -1,0 +1,19 @@
+class DuplicateVoteException extends Exception {
+    public DuplicateVoteException(String message) {
+        super(message);
+    }
+}
+
+// Thrown when candidate number entered is invalid
+class InvalidCandidateException extends Exception {
+    public InvalidCandidateException(String message) {
+        super(message);
+    }
+}
+
+// Thrown when voter's SIR is not verified
+class VoterNotVerifiedException extends Exception {
+    public VoterNotVerifiedException(String message) {
+        super(message);
+    }
+}
