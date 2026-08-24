@@ -4,12 +4,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<Candidate> candidates = new ArrayList<>();
-        
+
+        candidates.add(new Candidate("Narendra Modi","Bharatiya Janata Party (BJP)"));
          candidates.add(new Candidate("Anbumani Ramadoss.", "Pattali Makkal Katchi (PMK)"));
         candidates.add(new Candidate("Edappadi K. Palaniswami", "All India Anna Dravida Munnetra Kazhagam (AIADMK)"));
         candidates.add(new Candidate("M. K. Stalin.", "Dravida Munnetra Kazhagam (DMK)"));
         candidates.add(new Candidate(" C. Joseph Vijay (Vijay).", "Tamilaga Vettri Kazhagam (TVK)"));
         candidates.add(new Candidate(" Seeman", "Naam Tamilar Katchi (NTK)"));
+        candidates.add(new Canditates("Rahul Gandhi ","Indian National Congress (INC)"));
+        
 
 
         int choice;
