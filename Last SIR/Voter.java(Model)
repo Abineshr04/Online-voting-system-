@@ -1,0 +1,30 @@
+public class Voter {
+    private int voterId;
+    private String name;
+    private String epicNo;
+    private String constituency;
+    private String lastSirDate; // format: yyyy-MM-dd
+
+    public Voter(int voterId, String name, String epicNo, String constituency, String lastSirDate) {
+        this.voterId = voterId;
+        this.name = name;
+        this.epicNo = epicNo;
+        this.constituency = constituency;
+        this.lastSirDate = lastSirDate;
+    }
+
+    // Getters and setters
+    public int getVoterId() { return voterId; }
+    public String getName() { return name; }
+    public String getEpicNo() { return epicNo; }
+    public String getConstituency() { return constituency; }
+    public String getLastSirDate() { return lastSirDate; }
+
+    public void setLastSirDate(String lastSirDate) { this.lastSirDate = lastSirDate; }
+
+    @Override
+    public String toString() {
+        return "ID: " + voterId + " | Name: " + name + " | EPIC: " + epicNo +
+               " | Constituency: " + constituency + " | Last SIR: " + lastSirDate;
+    }
+}
